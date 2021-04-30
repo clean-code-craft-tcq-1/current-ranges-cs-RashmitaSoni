@@ -33,7 +33,8 @@ namespace BatteryCurrentMeasurementsTests
             expectedoutput.Add("3-5", 4);
             expectedoutput.Add("10-12", 3);
             Dictionary<string, int> originaloutput = _currentreadings.GetContinuousCurrentRangeWithReadings(currentsamplereadingslist);
-            Assert.AreEqual(originaloutput, expectedoutput);
+            Assert.AreEqual(originaloutput["3-5"], expectedoutput["3-5"]);
+            Assert.AreEqual(originaloutput["10-12"], expectedoutput["10-12"]);
         }
         [TestMethod]
         public void GivenCurrentReadingsSampleList_WhenSampleListIsInput_ThenReturnNotExpectedOutput()
@@ -43,7 +44,8 @@ namespace BatteryCurrentMeasurementsTests
             expectedoutput.Add("3-5", 4);
             expectedoutput.Add("10-12", 7);
             Dictionary<string, int> originaloutput = _currentreadings.GetContinuousCurrentRangeWithReadings(currentsamplereadingslist);
-            Assert.AreNotEqual(originaloutput, expectedoutput);
+            Assert.AreEqual(originaloutput["3-5"], expectedoutput["3-5"]);
+            Assert.AreEqual(originaloutput["10-12"], expectedoutput["10-12"]);
         }
     }
 }
