@@ -17,5 +17,5 @@ namespace BatteryCurrentMeasurementsTests
             originaloutput.Add("10-12", 3);
             return originaloutput;
         }
-    }
+    } 
 }
