@@ -36,12 +36,12 @@ namespace BatteryCurrentMeasurementsTests
         public void GivenCurrentReadingsSampleList_WhenSampleListIsInput_ThenReturnNotExpectedOutput()
         {
             List<int> currentsamplereadingslist = new List<int>() { 3, 5, 4, 10, 11, 12 };
-            Dictionary<string, int> expectedoutput = new Dictionary<string, int>();
-            expectedoutput.Add("3-5", 3);
-            expectedoutput.Add("10-12", 3);
-            Dictionary<string, int> originaloutput = _currentreadings.GetContinuousCurrentRangeWithReadings(currentsamplereadingslist);
-            Assert.AreEqual(originaloutput["3-5"], expectedoutput["3-5"]);
-            Assert.AreEqual(originaloutput["10-12"], expectedoutput["10-12"]);
+            Dictionary<string, int> expected = new Dictionary<string, int>();
+            expected.Add("3-5", 3);
+            expected.Add("10-12", 3);
+            Dictionary<string, int> original = _currentreadings.GetContinuousCurrentRangeWithReadings(currentsamplereadingslist);
+            Assert.AreEqual(original["3-5"], expected["3-5"]);
+            Assert.AreEqual(original["10-12"], expected["10-12"]);
         }
     }
 }
