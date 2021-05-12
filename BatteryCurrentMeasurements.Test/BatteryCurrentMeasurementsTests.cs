@@ -1,9 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Xunit;
 using System.Collections.Generic;
-using System;
-using System.Linq;
-using BatteryCurrentMeasurementsTests;
 
 namespace BatteryCurrentMeasurementsTests
 {
@@ -39,7 +35,7 @@ namespace BatteryCurrentMeasurementsTests
         [TestMethod]
         public void GivenCurrentReadingsSampleList_WhenSampleListIsInput_ThenReturnNotExpectedOutput()
         {
-             List<int> currentsamplereadingslist = new List<int>() { 3, 5, 4, 10, 11, 12 };
+            List<int> currentsamplereadingslist = new List<int>() { 3, 5, 4, 10, 11, 12 };
             Dictionary<string, int> expectedoutput = new Dictionary<string, int>();
             expectedoutput.Add("3-5", 3);
             expectedoutput.Add("10-12", 3);
