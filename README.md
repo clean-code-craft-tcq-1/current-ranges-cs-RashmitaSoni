@@ -52,5 +52,5 @@ Adapt/adopt/extend the `yml` files from one of your workflow folders.
 
 Implement one failing test and at least one passing test:
 
-- _enter the name of a **passing** test
-- _enter the name of a **failing** test
+- GivenCurrentReadingsSampleList_WhenSampleListIsInput_ThenReturnExpectedOutput() is the name of a **passing** test
+- GivenCurrentReadingsSampleList_WhenSampleListIsInput_ThenReturnNotExpectedOutput() is the name of a **failing** test
