@@ -1,21 +1,45 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BatteryCurrentMeasurementsTests
+namespace BatteryCurrentMeasurement
 {
     public class BatteryCurrentMeasurements
     {
-        public bool IsCurrentSampleListEmpty(List<int> emptycurrentsamplelist)
+        public bool IsCurrentReadingsListEmpty(List<int> emptycurrentsamplelist)
         {
             return (!emptycurrentsamplelist.Any());
         }
         public Dictionary<string, int> GetContinuousCurrentRangeWithReadings(List<int> currentsamplereadingslist)
         {
-            Dictionary<string, int> originaloutput = new Dictionary<string, int>();
-            originaloutput.Add("3-5", 4);
-            originaloutput.Add("10-12", 3);
-            return originaloutput;
+            if (!IsCurrentReadingsListEmpty(currentsamplereadingslist))
+            {
+                Dictionary<string, int> originaloutput = new Dictionary<string, int>();
+                currentsamplereadingslist.Sort();
+                int firstReading = currentsamplereadingslist[0];
+                int lastReading = currentsamplereadingslist[0];
+                int currentReading = currentsamplereadingslist[0];
+                int counter = 1;
+                for (int i = 1; i < currentsamplereadingslist.Count(); i++)
+                {
+                    if (currentReading == currentsamplereadingslist[i] || currentReading + 1 == currentsamplereadingslist[i])
+                    {
+                        currentReading = lastReading = currentsamplereadingslist[i];
+                        counter++;
+                    }
+                    else
+                    {
+                        originaloutput.Add(firstReading + "-" + lastReading, counter);
+                        currentReading = lastReading = firstReading = currentsamplereadingslist[i];
+                        counter = 1;
+                    }
+                }
+                originaloutput.Add(firstReading + "-" + lastReading, counter);
+                return originaloutput;
+            }
+            return null;
         }
-    } 
+    }
 }
